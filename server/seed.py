@@ -8,7 +8,7 @@ from faker import Faker
 from app import app
 from models import db, User, Comment, Post, Tarot
 
-# TAROTS TO DO:
+# TAROT INFO
 tarot_names = [
     "0: THE FOOL",
     "I: THE MAGICIAN",

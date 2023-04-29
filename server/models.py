@@ -10,6 +10,15 @@ from config import db, bcrypt
 class User(db.Model, SerializerMixin):
     __tablename__ = "users"
 
+    serialize_rules = (
+        "-comments.post",
+        "-comments.user",
+        "-posts.user",
+        "-posts.comments.user",
+    )
+
+    # serialize_only = ("id", "email", "posts.comments.id",)
+
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
@@ -41,6 +50,11 @@ class User(db.Model, SerializerMixin):
 class Tarot(db.Model, SerializerMixin):
     __tablename__ = "tarots"
 
+    serialize_rules = (
+        "-comments.tarot",
+        "-comments.user.comments",
+    )
+
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
@@ -55,6 +69,11 @@ class Tarot(db.Model, SerializerMixin):
 class Post(db.Model, SerializerMixin):
     __tablename__ = "posts"
 
+    serialize_rules = (
+        "-comments.post",
+        "-comments.user.comments",
+    )
+
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
@@ -68,6 +87,14 @@ class Post(db.Model, SerializerMixin):
 
 class Comment(db.Model, SerializerMixin):
     __tablename__ = "comments"
+
+    serialize_rules = (
+        "-user.comments",
+        "-tarot.comments",
+        "-post.comments",
+        "-post.user.comments",
+        "-post.user.post.comments"
+    )
 
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
