@@ -7,9 +7,16 @@ import Comment from "./Comment";
 function TarotPage( { tarots } ){
 
     const [randTarot, setRandTarot] = useState(0)
+    const [luckyNumbers, setLuckyNumbers] = useState("")
+
+    function getLuckyNumbers(){
+        const variable = `${Math.floor(Math.random()*98 + 1)} ${Math.floor(Math.random()*98 + 1)} ${Math.floor(Math.random()*98 + 1)} ${Math.floor(Math.random()*98 + 1)} ${Math.floor(Math.random()*98 + 1)} ${Math.floor(Math.random()*98 + 1)} `
+        setLuckyNumbers(variable)
+    }
 
     function getRandomTarot(){
         setRandTarot(Math.floor(Math.random() * 23) + 1)
+        getLuckyNumbers()
     }
 
     let currentTarot = []
@@ -30,10 +37,12 @@ function TarotPage( { tarots } ){
                         <div>
                             <Tarot 
                                 key={tarot.id}
+                                id={tarot.id}
                                 name={tarot.name}
                                 imageUrl={tarot.image_url}
                                 description={tarot.description}
                                 fortune={tarot.fortune}
+                                luckyNumbers={luckyNumbers}
                                 comments={tarot.comments.filter((comment) =>{
                                     return comment.tarot_id === tarot.id
                                 })}

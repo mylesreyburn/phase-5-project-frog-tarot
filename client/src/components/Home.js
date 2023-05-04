@@ -10,6 +10,9 @@ function Home(){
 
     return (
         <div>
+            <div className="home">
+                <h1>Welcome to Frog Tarot!</h1>
+            </div>
             <div className="directory">
                 <Link to = "/tarot">
                     <button id="tarotButton"> Frog Tarot </button>
@@ -20,7 +23,7 @@ function Home(){
                     {
                         userLoggedIn ? 
                         <div>
-                        <Link to ={`/user/${loggedInUser.id}`}>
+                        <Link to ={loggedInUser ? `/user/${loggedInUser.id}` : `/`}>
                             <button id="userPageButton"> Your Page </button>
                         </Link>
                         <Logout />
@@ -35,9 +38,6 @@ function Home(){
                         </Link>
                         </div>
                     }  
-            </div>
-            <div className="home">
-                <p>1</p>
             </div>
         </div>
     )

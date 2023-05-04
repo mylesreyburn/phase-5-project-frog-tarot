@@ -36,6 +36,8 @@ def log_in():
         return response
     
     session["u_token"] = user.id
+
+    print("session['u_token']: ", session["u_token"])
     
     response = make_response(
         jsonify(user.to_dict()),
@@ -186,7 +188,7 @@ def comments():
     return response
 
 #@app.route("/user/<int:id>", methods=["GET", "PATCH"])
-@app.route("/user/<int:id>")
+@app.route("/user/<int:id>", methods=["GET", "DELETE"])
 def user_by_id(id):
     user = User.query.filter_by(id=id).first()
     if not user:
@@ -231,6 +233,31 @@ def user_by_id(id):
     #         200
     #     )
     #     return response
+
+    if request.method == "DELETE":
+        # if session["u_token"] != user.id:
+        #     response = make_response(
+        #         jsonify({
+        #             "error": "403: Forbidden"
+        #         }),
+        #         403
+        #     )
+        #     return response
+        for comment in user.comments:
+            db.session.delete(comment)
+        for post in user.posts:
+            db.session.delete(post)
+        db.session.delete(user)
+        db.session.commit()
+
+        response = make_response(
+            jsonify({
+                "success": "200: User, Posts, and Child Comments Deleted Successfully."
+            }),
+            200
+        )
+        return response
+
     
 @app.route("/comment/<int:id>", methods=["GET", "PATCH", "DELETE"])
 def comment_by_id(id):
@@ -385,14 +412,14 @@ def get_tarot_by_id(id):
 
 @app.route("/comment/new", methods=["POST"])
 def new_comment():
-    if not session["u_token"]:
-        response = make_response(
-            jsonify({
-                "error": "403: Must be logged in in order to leave comments."
-            }),
-            403
-        )
-        return response
+    # if not session["u_token"]:
+    #     response = make_response(
+    #         jsonify({
+    #             "error": "403: Must be logged in in order to leave comments."
+    #         }),
+    #         403
+    #     )
+    #     return response
 
     user_id = request.json.get("user_id")
     tarot_id = request.json.get("tarot_id")
@@ -494,6 +521,15 @@ def new_post():
 
     return response
 
+@app.route("/error/<int:id>", methods=["DELETE"])
+def error_page(id):
+    response = make_response(
+        jsonify({
+                "error": "400: Attempted Delete on Invalid Object."
+            }),
+            400
+        )
+    return response
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

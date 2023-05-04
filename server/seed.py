@@ -99,7 +99,7 @@ if __name__ == "__main__":
 
         tarots = []
         for name in tarot_names:
-            image_url = None
+            image_url = "https://cdn.discordapp.com/attachments/661313314671951903/1097715343297872005/zwev93eeu4451.png"
             description = f"Description: {fake.paragraph(nb_sentences=10)}"
             fortune = f"Fortune: {fake.catch_phrase()}"
 

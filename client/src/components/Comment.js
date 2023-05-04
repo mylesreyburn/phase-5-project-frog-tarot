@@ -1,6 +1,8 @@
 import { Switch, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import EditCommentForm from "./EditCommentForm";
+import DeleteButton from "./DeleteButton";
+
 
 function Comment( { userId, content, userName, commentId } ){
 
@@ -18,6 +20,7 @@ function Comment( { userId, content, userName, commentId } ){
         <div>
             <h4>{userName}</h4>
             <p>{content}</p>
+            <DeleteButton type="Comment"/>
             <EditCommentForm commentId={commentId} userId={userId} />
         </div>
     )

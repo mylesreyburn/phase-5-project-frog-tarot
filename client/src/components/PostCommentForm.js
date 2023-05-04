@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
 import { userAtom, loggedInAtom } from "./lib/atoms";
 
-function TarotCommentForm( { tarotId } ){
+function PostCommentForm( { postId } ){
 
     const currentUser = useRecoilValue(userAtom)
     const isUserLoggedIn = useRecoilValue(loggedInAtom) 
@@ -14,7 +14,7 @@ function TarotCommentForm( { tarotId } ){
             title: "",
             content: "",
             user_id: currentUser ? currentUser.id : null,
-            tarot_id: tarotId
+            post_id: postId
         },
    
         onSubmit: values => {
@@ -53,4 +53,4 @@ function TarotCommentForm( { tarotId } ){
     )
 }
 
-export default TarotCommentForm
+export default PostCommentForm

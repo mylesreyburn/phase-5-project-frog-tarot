@@ -12,6 +12,7 @@ import { userAtom, loggedInAtom } from "./lib/atoms";
 function Navbar(){
 
     const userLoggedIn = useRecoilValue(loggedInAtom)
+    const loggedInUser = useRecoilValue(userAtom)
 
     return (
         <div className="navbar">
@@ -27,6 +28,9 @@ function Navbar(){
             {
                 userLoggedIn ? 
                 <div>
+                <Link to ={loggedInUser ? `/user/${loggedInUser.id}` : `/`}>
+                    <button id="userPageButton"> Your Page </button>
+                </Link>
                 <Logout />
                 </div>
                 :

@@ -45,7 +45,7 @@ function TarotPostForm( { name, imageUrl, description, fortune } ){
       return(
         <div>
             <form onSubmit={formik.handleSubmit}>
-            <label>New Post</label>
+            <label>New Post {""}</label>
             <label htmlFor="title">Title</label>
                 <input
                     id="title"

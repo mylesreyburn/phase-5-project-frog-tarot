@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import Comment from "./Comment";
 import EditPostForm from "./EditPostForm";
 import Navbar from "./Navbar";
+import DeleteButton from "./DeleteButton";
+import PostCommentForm from "./PostCommentForm";
+
 
 function OuijaPost( { } ){
 
@@ -29,6 +32,8 @@ function OuijaPost( { } ){
             <h3>{postUser.username}</h3>
             <h4>content: {post.content}</h4>
             <EditPostForm postId={post.id} userId={postUser.id} />
+            <PostCommentForm postId={post.id} />
+            <DeleteButton type="Post"/>
             {postComments.map( (comment) => {
                 return <Comment key={comment.id} userId={comment.user.id} content={comment.content} userName={comment.user.username} commentId={comment.id}/>
             })}
