@@ -13,7 +13,7 @@ class User(db.Model, SerializerMixin):
     serialize_rules = (
         "-comments.post",
         "-comments.user",
-        "-posts.user",
+        "-posts.user.posts",
         "-posts.comments.user",
     )
 
@@ -25,6 +25,7 @@ class User(db.Model, SerializerMixin):
 
     email = db.Column(db.String)
     username = db.Column(db.String)
+    bio = db.Column(db.String)
     _password_hash = db.Column(db.String)
 
     posts = db.relationship("Post", backref="user")
@@ -78,6 +79,7 @@ class Post(db.Model, SerializerMixin):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
+    title = db.Column(db.String)
     content = db.Column(db.String)
 
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))

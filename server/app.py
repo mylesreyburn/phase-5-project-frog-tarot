@@ -1,4 +1,5 @@
 from flask import request, jsonify, make_response, session
+from profanity import profanity
 
 # Local imports
 from config import app, db, api
@@ -37,15 +38,13 @@ def log_in():
     session["u_token"] = user.id
     
     response = make_response(
-        jsonify({
-            "success" : "200: Successfully signed in"
-        }),
+        jsonify(user.to_dict()),
         200
     )
 
     return response
 
-@app.route("/log_out", methods=["POST"])
+@app.route("/log_out", methods=["GET"])
 def log_out():
     try:
         session["u_token"] = None
@@ -70,6 +69,15 @@ def sign_up():
     email = request.json.get("email")
     username = request.json.get("username")
     password = request.json.get("password")
+
+    if profanity.contains_profanity(username):
+        response = make_response(
+            jsonify({
+                "error": "400: Profanity detected."
+            }),
+            400
+        )
+        return response
     
     user_exists = User.query.filter_by(email=email).first() is not None
 
@@ -112,9 +120,7 @@ def sign_up():
     session["u_token"] = new_user.id
 
     response = make_response(
-        jsonify({
-            "success": "201: User signed up successfully."
-        })
+        jsonify(new_user.to_dict()), 201
     )
 
     return response
@@ -260,7 +266,7 @@ def comment_by_id(id):
         new_content = request.json.get("content")
 
         if new_content != None:
-            setattr(comment, "contents", new_content)
+            setattr(comment, "content", new_content)
         db.session.commit()
         comment_dict = comment.to_dict()
         response = make_response(
@@ -313,18 +319,18 @@ def post_by_id(id):
 
     # PATCH METHOD
     if request.method == "PATCH":
-        if session["u_token"] != post.user.id:
-            response = make_response(
-                jsonify({
-                    "error": "403: Forbidden"
-                }),
-                403
-            )
-            return response
+        # if session["u_token"] != post.user.id:
+        #     response = make_response(
+        #         jsonify({
+        #             "error": "403: Forbidden"
+        #         }),
+        #         403
+        #     )
+        #     return response
         new_content = request.json.get("content")
 
         if new_content != None:
-            setattr(post, "contents", new_content)
+            setattr(post, "content", new_content)
         db.session.commit()
         post_dict = post.to_dict()
         response = make_response(
@@ -335,14 +341,14 @@ def post_by_id(id):
     
     # DELETE METHOD
     if request.method == "DELETE":
-        # if session["u_token"] != post.user.id:
-        #     response = make_response(
-        #         jsonify({
-        #             "error": "403: Forbidden"
-        #         }),
-        #         403
-        #     )
-        #     return response
+        if session["u_token"] != post.user.id:
+            response = make_response(
+                jsonify({
+                    "error": "403: Forbidden"
+                }),
+                403
+            )
+            return response
         for comment in post.comments:
             db.session.delete(comment)
         db.session.delete(post)
@@ -393,6 +399,15 @@ def new_comment():
     post_id = request.json.get("post_id")
     content = request.json.get("content")
 
+    if profanity.contains_profanity(content):
+        response = make_response(
+            jsonify({
+                "error": "400: Profanity detected."
+            }),
+            400
+        )
+        return response
+
     new_comment = Comment(
         user_id=user_id,
         tarot_id=tarot_id,
@@ -422,27 +437,47 @@ def new_comment():
 
 @app.route("/post/new", methods=["POST"])
 def new_post():
-    if not session["u_token"]:
+    # if not session["u_token"]:
+    #     response = make_response(
+    #         jsonify({
+    #             "error": "403: Must be logged in in order to leave posts."
+    #         }),
+    #         403
+    #     )
+    #     return response
+
+    user_id = request.json.get("user_id")
+    title = request.json.get("title")
+    content = request.json.get("content")
+
+    if profanity.contains_profanity(content) or profanity.contains_profanity(title):
         response = make_response(
             jsonify({
-                "error": "403: Must be logged in in order to leave posts."
+                "error": "400: Profanity detected."
             }),
-            403
+            400
         )
         return response
 
-    user_id = request.json.get("user_id")
-    content = request.json.get("content")
-
     new_post = Post(
         user_id=user_id,
+        title=title,
         content=content
     )
+
+    if new_post.user_id == None:
+        response = response = make_response(
+            jsonify({
+                "error": "400: Invalid Post."
+            }),
+            400
+        )
+        return response
 
     if not new_post:
         response = make_response(
             jsonify({
-                "error": "400: Invalid Comment."
+                "error": "400: Invalid Post."
             }),
             400
         )
@@ -453,7 +488,7 @@ def new_post():
 
     response = make_response(
         jsonify({
-            "success": "201: Comment Created Successfully."
+            "success": "201: Post Created Successfully."
         })
     )
 

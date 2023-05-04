@@ -26,3 +26,5 @@ COMMIT 2:
     - /tarot/<id>: GET which returns a specific tarot card
     - /comment/new: POST which creates a new Comment and returns success json
     - /post/new: POST which creates a new Post and returns success json
+
+
