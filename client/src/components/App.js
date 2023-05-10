@@ -15,6 +15,8 @@ import OuijaPost from "./OuijaPost";
 import Logout from "./Logout";
 import UserPage from "./UserPage";
 
+import "./style.css"
+
 import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
 import { userAtom, loggedInAtom } from "./lib/atoms";
 

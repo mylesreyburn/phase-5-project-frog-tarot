@@ -6,6 +6,7 @@ import EditPostForm from "./EditPostForm";
 import Navbar from "./Navbar";
 import DeleteButton from "./DeleteButton";
 import PostCommentForm from "./PostCommentForm";
+import React from "react";
 
 
 function OuijaPost( { } ){
@@ -26,18 +27,18 @@ function OuijaPost( { } ){
         }, []);
 
     return (
-        <div>
+        <React.Fragment>
             <Navbar/>
             <h2>{post.title}</h2>
             <h3>{postUser.username}</h3>
             <h4>content: {post.content}</h4>
             <EditPostForm postId={post.id} userId={postUser.id} />
-            <PostCommentForm postId={post.id} />
-            <DeleteButton type="Post"/>
+            <PostCommentForm postId={id} />
+            <DeleteButton type="Post" itemId={post.id}/>
             {postComments.map( (comment) => {
                 return <Comment key={comment.id} userId={comment.user.id} content={comment.content} userName={comment.user.username} commentId={comment.id}/>
             })}
-        </div>
+        </React.Fragment>
     )
 }
 

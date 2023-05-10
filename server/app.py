@@ -282,14 +282,14 @@ def comment_by_id(id):
 
     # PATCH METHOD
     if request.method == "PATCH":
-        if session["u_token"] != comment.user.id:
-            response = make_response(
-                jsonify({
-                    "error": "403: Forbidden"
-                }),
-                403
-            )
-            return response
+        # if session["u_token"] != comment.user.id:
+        #     response = make_response(
+        #         jsonify({
+        #             "error": "403: Forbidden"
+        #         }),
+        #         403
+        #     )
+        #     return response
         new_content = request.json.get("content")
 
         if new_content != None:
@@ -304,14 +304,14 @@ def comment_by_id(id):
     
     # DELETE METHOD
     if request.method == "DELETE":
-        if session["u_token"] != comment.user.id:
-            response = make_response(
-                jsonify({
-                    "error": "403: Forbidden"
-                }),
-                403
-            )
-            return response
+        # if session["u_token"] != comment.user.id:
+        #     response = make_response(
+        #         jsonify({
+        #             "error": "403: Forbidden"
+        #         }),
+        #         403
+        #     )
+        #     return response
         db.session.delete(comment)
         db.session.commit()
 
@@ -368,14 +368,14 @@ def post_by_id(id):
     
     # DELETE METHOD
     if request.method == "DELETE":
-        if session["u_token"] != post.user.id:
-            response = make_response(
-                jsonify({
-                    "error": "403: Forbidden"
-                }),
-                403
-            )
-            return response
+        # if session["u_token"] != post.user.id:
+        #     response = make_response(
+        #         jsonify({
+        #             "error": "403: Forbidden"
+        #         }),
+        #         403
+        #     )
+        #     return response
         for comment in post.comments:
             db.session.delete(comment)
         db.session.delete(post)

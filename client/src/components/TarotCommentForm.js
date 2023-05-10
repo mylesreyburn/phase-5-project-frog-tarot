@@ -11,7 +11,6 @@ function TarotCommentForm( { tarotId } ){
     const formik = useFormik({
 
         initialValues: {
-            title: "",
             content: "",
             user_id: currentUser ? currentUser.id : null,
             tarot_id: tarotId

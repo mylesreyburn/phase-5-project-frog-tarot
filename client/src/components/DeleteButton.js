@@ -1,8 +1,11 @@
 import { Switch, Route } from "react-router-dom";
 import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
 import { userAtom, loggedInAtom } from "./lib/atoms";
+import { useHistory } from "react-router-dom";
 
-function DeleteButton( { type, id } ){
+function DeleteButton( { type, itemId } ){
+
+    const history = useHistory();
 
     const currentUser = useRecoilValue(userAtom)
     const isUserLoggedIn = useRecoilValue(loggedInAtom) 
@@ -27,7 +30,7 @@ function DeleteButton( { type, id } ){
 
     function deleteThing(){
         if(isUserLoggedIn){
-            fetch(`http://localhost:5555/${typeToDelete()}/${id}`, {
+            fetch(`http://localhost:5555/${typeToDelete()}/${itemId}`, {
                 method: "DELETE",
                 headers: {
                     "Access-Control-Allow-Origin": "*"
@@ -47,7 +50,9 @@ function DeleteButton( { type, id } ){
                                     return response.json().then(json => {
                                         setLoggedInUser(null)
                                         setLoggedInBool(false)
-                                    })
+                                    }).then(() => {
+                                            history.push("/")
+                                        })
                                 }
                                 else {
                                     return {
@@ -57,6 +62,11 @@ function DeleteButton( { type, id } ){
                             })
                         }
                     })
+                    .then(() => {
+                        if (typeToDelete() === "post"){
+                            history.push("/ouija")
+                        }
+                })
                 }
                 else{
                     response.json()

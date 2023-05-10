@@ -30,8 +30,8 @@ function TarotPage( { tarots } ){
     return (
         <div>
             <Navbar/>
-            <h1>WEED Weed weeeed</h1>
-            <button onClick={getRandomTarot}>GENERATE TAROT</button>
+            <h1 id="tarotHeader">The Frog Tarot</h1>
+            <button id="generateTarot" onClick={getRandomTarot}>GENERATE TAROT</button>
             {currentTarot.map((tarot) => {
                     return( 
                         <div>

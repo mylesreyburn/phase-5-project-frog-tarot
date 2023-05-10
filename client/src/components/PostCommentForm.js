@@ -11,7 +11,6 @@ function PostCommentForm( { postId } ){
     const formik = useFormik({
 
         initialValues: {
-            title: "",
             content: "",
             user_id: currentUser ? currentUser.id : null,
             post_id: postId
@@ -27,7 +26,10 @@ function PostCommentForm( { postId } ){
             body: JSON.stringify(values)
         })
         .then(response => response.json())
-        .then(json => console.log(json))
+        .then(json => { 
+            console.log(json) 
+            console.log(values)
+        })
    
         }
         else {

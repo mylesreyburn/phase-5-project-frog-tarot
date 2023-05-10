@@ -1,0 +1,25 @@
+button {
+    background-color: aquamarine;
+}
+
+#generateTarot {
+    font-size: 100px;
+}
+
+.App {
+    margin: auto;
+    width: 80%;
+    border: 3px solid green;
+    padding: 10px;
+  }
+
+#homeNav {
+    margin: auto;
+}
+
+.tarotPage {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+}
+
