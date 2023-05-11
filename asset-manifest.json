@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/phase-5-project-frog-tarot/static/css/main.b04a2d5b.css",
+    "main.js": "/phase-5-project-frog-tarot/static/js/main.04439573.js",
+    "static/media/background.jpg": "/phase-5-project-frog-tarot/static/media/background.c46ff01a898586a758e7.jpg",
+    "index.html": "/phase-5-project-frog-tarot/index.html",
+    "main.b04a2d5b.css.map": "/phase-5-project-frog-tarot/static/css/main.b04a2d5b.css.map",
+    "main.04439573.js.map": "/phase-5-project-frog-tarot/static/js/main.04439573.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b04a2d5b.css",
+    "static/js/main.04439573.js"
+  ]
+}
