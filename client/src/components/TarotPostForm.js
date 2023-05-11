@@ -13,7 +13,7 @@ function TarotPostForm( { name, imageUrl, description, fortune } ){
         initialValues: {
             user_id: loggedInUser ? loggedInUser.id : null, 
             title: userLoggedIn ? `${loggedInUser.username}'s Tarot Reading` : "",
-            content: `${name} \n ${description} \n ${fortune}`,
+            content: `Tarot Name: ${name} \n Description: ${description} \n Fortune: ${fortune}`,
         },
    
         onSubmit: values => {
@@ -27,15 +27,13 @@ function TarotPostForm( { name, imageUrl, description, fortune } ){
             })
             .then(response => {
                 if (response.ok){
-
                     return response.json()
                 }
                 else {
-                    return {
-                        
-                    }
+                    window.alert("Error creating post.")
                 }
             })
+            .then(() => window.location.reload(false))
             }
             else {
                 window.alert("Must be logged in!")
@@ -43,10 +41,12 @@ function TarotPostForm( { name, imageUrl, description, fortune } ){
         });
 
       return(
-        <div>
+        <div className="tarotPostForm">
             <form onSubmit={formik.handleSubmit}>
-            <label>New Post {""}</label>
+            <label>Post Your Results!</label>
+            <br></br>
             <label htmlFor="title">Title</label>
+            <br></br>
                 <input
                     id="title"
                     name="title"
@@ -54,15 +54,18 @@ function TarotPostForm( { name, imageUrl, description, fortune } ){
                     onChange={formik.handleChange}
                     value={formik.values.title}
                 />
+            <br></br>
             <label htmlFor="content">Content</label>
-                <input
-                    id="content"
+            <br></br>
+                <textarea
+                    id="postContent"
                     name="content"
                     type="text"
                     onChange={formik.handleChange}
                     value={formik.values.content}
                 />
-            <button type="submit">Submit</button>
+            <br></br>
+            <button type="submit">Post Results</button>
             </form>
        </div>
     )

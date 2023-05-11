@@ -8,6 +8,9 @@ import DeleteButton from "./DeleteButton";
 import PostCommentForm from "./PostCommentForm";
 import React from "react";
 
+import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
+import { userAtom, loggedInAtom } from "./lib/atoms";
+
 
 function OuijaPost( { } ){
 
@@ -15,6 +18,22 @@ function OuijaPost( { } ){
     const [postUser, setPostUser] = useState([])
     const [postComments, setPostComments] = useState([])
     const { id } = useParams()
+
+    const [isHidden, setIsHidden] = useState(true)
+
+    const currentUser = useRecoilValue(userAtom)
+
+    function toggleVisibilityOn(){
+        console.log("weed")
+        console.log(post.id)
+        if(post.user_id === (currentUser ? currentUser.id : null)){
+            setIsHidden(false)
+        }
+    }
+
+    function toggleVisibilityOff(){
+        setIsHidden(true)
+    }
 
     useEffect(() => {
         fetch(`http://localhost:5555/post/${id}`)
@@ -24,21 +43,22 @@ function OuijaPost( { } ){
             setPostUser(json.user)
             setPostComments(json.comments)
         })
+        .then(() => toggleVisibilityOn())
         }, []);
 
     return (
-        <React.Fragment>
+        <div className="post">
             <Navbar/>
             <h2>{post.title}</h2>
             <h3>{postUser.username}</h3>
             <h4>content: {post.content}</h4>
-            <EditPostForm postId={post.id} userId={postUser.id} />
+            {isHidden ? <></> : <EditPostForm postId={post.id} userId={postUser.id} />}
+            {isHidden ? <></> : <DeleteButton type="Post" itemId={post.id}/>}
             <PostCommentForm postId={id} />
-            <DeleteButton type="Post" itemId={post.id}/>
             {postComments.map( (comment) => {
                 return <Comment key={comment.id} userId={comment.user.id} content={comment.content} userName={comment.user.username} commentId={comment.id}/>
             })}
-        </React.Fragment>
+        </div>
     )
 }
 

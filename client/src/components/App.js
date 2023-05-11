@@ -56,11 +56,8 @@ function App() {
 
     return (
     
-      <div className="App">
+      <div className="App" id="App">
         <div id="homeNav">
-            <h1>{loggedInUser ? loggedInUser.username : "no username found"}</h1>
-            <h1>{isLoggedIn ? "logged in!" : "not logged in :("}</h1>
-        </div>
         <Switch>
             <Route exact path="/">
                 <Home/>
@@ -84,6 +81,7 @@ function App() {
                 <UserPage />
             </Route>
         </Switch>
+        </div>
       </div>
     );
   }

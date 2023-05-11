@@ -34,7 +34,7 @@ function Signup(){
                 }
                 else {
                     return {
-                        
+
                     }
                 }
             })
@@ -43,8 +43,9 @@ function Signup(){
       });
 
     return (
-        <div>
+        <div className="Sign Up">
             <Navbar/>
+            <h1 id="signUpHeader">Sign Up</h1>
             <form onSubmit={formik.handleSubmit}>
             <label htmlFor="username">Username</label>
                 <input

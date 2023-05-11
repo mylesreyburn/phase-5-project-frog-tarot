@@ -1,3 +1,15 @@
+html {
+    background-color: #cfebd3;
+    background-image: url("./images/background.jpg");
+    background-blend-mode: multiply;
+    background-size: 20%;
+}
+
+#App {
+    background-color: rgb(133, 218, 155);
+    background-blend-mode: darken;
+}
+
 button {
     background-color: aquamarine;
 }
@@ -21,5 +33,123 @@ button {
     margin: auto;
     width: 80%;
     padding: 10px;
+}
+
+.home h1{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 200px;
+    color: lightgreen;
+    text-shadow: -2px 2px 0 #000,
+                 2px 2px 0 #000,
+                 2px -2px 0 #000,
+                 -2px -2px 0 #000;
+    border-color: black;
+}
+
+.directory {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.directory button {
+    font-size: 100px;
+
+}
+
+.tarotBody {
+    text-align: center;
+}
+
+.tarotBody #tarotName {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: rgb(255, 174, 0);
+    font-size: 100px;
+    text-shadow: -2px 2px 0 #000,
+                 2px 2px 0 #000,
+                 2px -2px 0 #000,
+                 -2px -2px 0 #000;
+    border-color: black;
+}
+
+.tarotBody #tarotImage {
+    width: 600px;
+    height: 600px;
+}
+
+.tarotBody #tarotDescription {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+}
+
+.tarotBody #luckyNumbers {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+.tarotBody #tarotFortune {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+.tarotBody h2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.tarotPage #navbar{
+    text-align: center;
+}
+
+.tarotPostForm {
+    text-align: left;
+}
+
+.tarotPostForm #postContent{
+
+    width: 40%;
+}
+
+.tarotPage #tarotHeader {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: rgb(255, 174, 0);
+    font-size: 100px;
+    text-shadow: -2px 2px 0 #000,
+                 2px 2px 0 #000,
+                 2px -2px 0 #000,
+                 -2px -2px 0 #000;
+    border-color: black;
+}
+
+.tarotPage #tarotHeader{
+    text-align: center;
+}
+
+.tarotPage #buttonContainer {
+    text-align: center;
+
+}
+
+.tarotPage #postContent {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.tarotPage #sendEmailButton {
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+#deleteButton {
+    align-self: right;
 }
 

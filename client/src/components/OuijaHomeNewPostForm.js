@@ -28,7 +28,7 @@ function OuijaForm(){
         })
         .then(response => response.json())
         .then(json => console.log(json))
-   
+        .then(() => window.location.reload(false))
         }
         else {
             window.alert("Must be logged in!")

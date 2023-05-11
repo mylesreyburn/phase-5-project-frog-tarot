@@ -32,9 +32,7 @@ function Login(){
                     })
                 }
                 else {
-                    return {
-                        
-                    }
+                    window.alert("Encountered an error when signing in, likely an invalid username or password. \nPlease try again.")
                 }
             })
             
@@ -42,8 +40,9 @@ function Login(){
       });
 
       return(
-        <div>
+        <div className="login">
             <Navbar />
+            <h1 id="loginHeader">Log In</h1>
             <form onSubmit={formik.handleSubmit}>
             <label htmlFor="email">Email</label>
                 <input

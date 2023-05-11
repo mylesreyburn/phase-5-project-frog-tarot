@@ -30,6 +30,7 @@ function PostCommentForm( { postId } ){
             console.log(json) 
             console.log(values)
         })
+        .then(() => window.location.reload(false))
    
         }
         else {
@@ -42,16 +43,19 @@ function PostCommentForm( { postId } ){
 
     return(
         <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="content">New Comment</label>
-            <input
+            <label htmlFor="content">New Comment</label>
+            <br></br>
+            <textarea
                 id="content"
                 name="content"
                 type="text"
                 onChange={formik.handleChange}
                 value={formik.values.content}
             />
-        <button type="submit">Submit</button>
+            <br></br>
+        <button className="commentButton" type="submit">Submit Comment</button>
        </form>
+       
     )
 }
 

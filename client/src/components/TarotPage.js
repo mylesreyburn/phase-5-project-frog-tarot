@@ -28,10 +28,12 @@ function TarotPage( { tarots } ){
     }
 
     return (
-        <div>
-            <Navbar/>
+        <div className="tarotPage">
+            <Navbar />
             <h1 id="tarotHeader">The Frog Tarot</h1>
-            <button id="generateTarot" onClick={getRandomTarot}>GENERATE TAROT</button>
+            <div id="buttonContainer">
+                <button id="generateTarot" onClick={getRandomTarot}>GENERATE TAROT</button>
+            </div>
             {currentTarot.map((tarot) => {
                     return( 
                         <div>

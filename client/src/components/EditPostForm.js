@@ -28,7 +28,7 @@ function EditPostForm( { postId, userId } ){
                 })
                 .then(response => response.json())
                 .then(json => console.log(json))
-                .then()
+                .then(() => window.location.reload(false))
             }
             else {
                 window.alert("Must be logged in as the correct user!")
@@ -39,13 +39,15 @@ function EditPostForm( { postId, userId } ){
       return(
         <form onSubmit={formik.handleSubmit}>
         <label htmlFor="content">Post Content</label>
-            <input
+        <br></br>
+            <textarea
                 id="content"
                 name="content"
                 type="text"
                 onChange={formik.handleChange}
                 value={formik.values.content}
             />
+        <br></br>
         <button type="submit">Submit</button>
        </form>
     )
