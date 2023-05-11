@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5555",
-  "homepage": "https://myles-reyburn.github.io/phase-5-project-frog-tarot",
+  "homepage": "https://mylesreyburn.github.io/phase-5-project-frog-tarot",
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "@emotion/react": "^11.10.6",
