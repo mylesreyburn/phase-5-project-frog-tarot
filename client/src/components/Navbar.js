@@ -27,14 +27,14 @@ function Navbar(){
             </Link>
             {
                 userLoggedIn ? 
-                <div>
+                <div className="userButtons">
                 <Link to ={loggedInUser ? `/user/${loggedInUser.id}` : `/`}>
                     <button id="userPageButton"> Your Page </button>
                 </Link>
                 <Logout />
                 </div>
                 :
-                <div>
+                <div className="userButtons">
                 <Link to = "/login">
                     <button id="loginButton"> Log In </button>
                 </Link>

@@ -24,8 +24,6 @@ function OuijaPost( { } ){
     const currentUser = useRecoilValue(userAtom)
 
     function toggleVisibilityOn(){
-        console.log("weed")
-        console.log(post.id)
         if(post.user_id === (currentUser ? currentUser.id : null)){
             setIsHidden(false)
         }
@@ -43,15 +41,20 @@ function OuijaPost( { } ){
             setPostUser(json.user)
             setPostComments(json.comments)
         })
-        .then(() => toggleVisibilityOn())
+        .then()
         }, []);
 
     return (
         <div className="post">
             <Navbar/>
-            <h2>{post.title}</h2>
-            <h3>{postUser.username}</h3>
-            <h4>content: {post.content}</h4>
+            <div id="postBody">
+            <h2 id="postTitle" >{post.title}</h2>
+            <p id="postUser">{postUser.username}</p>
+            <p id="postContent">{post.content}</p>
+            </div>
+                <div id="editPostButton" >
+                    {post.user_id === (currentUser ? currentUser.id : null) ? <button onClick={toggleVisibilityOn}>Edit Post</button> : <></>}
+                </div>
             {isHidden ? <></> : <EditPostForm postId={post.id} userId={postUser.id} />}
             {isHidden ? <></> : <DeleteButton type="Post" itemId={post.id}/>}
             <PostCommentForm postId={id} />

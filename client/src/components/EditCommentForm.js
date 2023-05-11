@@ -5,7 +5,7 @@ import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
 import { userAtom, loggedInAtom } from "./lib/atoms";
 
 
-function EditCommentForm( { postId, userId } ){
+function EditCommentForm( { commentId, userId } ){
 
     const currentUser = useRecoilValue(userAtom)
     const isUserLoggedIn = useRecoilValue(loggedInAtom) 
@@ -19,7 +19,7 @@ function EditCommentForm( { postId, userId } ){
         onSubmit: values => {
             
             if(isUserLoggedIn && currentUser.id === userId){
-                fetch(`http://localhost:5555/comment/${postId}`, {
+                fetch(`http://localhost:5555/comment/${commentId}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

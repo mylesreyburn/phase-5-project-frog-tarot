@@ -13,7 +13,7 @@ function TarotPostForm( { name, imageUrl, description, fortune } ){
         initialValues: {
             user_id: loggedInUser ? loggedInUser.id : null, 
             title: userLoggedIn ? `${loggedInUser.username}'s Tarot Reading` : "",
-            content: `Tarot Name: ${name} \n Description: ${description} \n Fortune: ${fortune}`,
+            content: userLoggedIn ? `Tarot Name: ${name} \n Description: ${description} \n Fortune: ${fortune}` : "",
         },
    
         onSubmit: values => {

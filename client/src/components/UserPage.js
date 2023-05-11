@@ -25,7 +25,8 @@ function UserPage(){
         <div>
             <Navbar />
             <h1 id="userHeader">{user ? user.username : null}'s Page</h1>
-            <h1 id="userBio">Bio: {user ? user.bio : null}</h1>
+            <h2 className="userBio">Bio</h2>
+            <p className="userBio">{user ? user.bio : "This user doesn't have a bio :("}</p>
             <DeleteButton type={"User"} itemId={id}/>
         </div>
     )

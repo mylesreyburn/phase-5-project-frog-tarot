@@ -39,8 +39,10 @@ function OuijaForm(){
 
 
     return(
-        <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="title">Title</label>
+        <form onSubmit={formik.handleSubmit} class="newPostForm">
+        <h2 id="formTitle">New Post</h2>
+        <label htmlFor="title" id="titleHeader">Title</label>
+        <br></br>
             <input
                 id="title"
                 name="title"
@@ -48,14 +50,17 @@ function OuijaForm(){
                 onChange={formik.handleChange}
                 value={formik.values.title}
             />
-        <label htmlFor="content">Content</label>
-            <input
+        <br></br>
+        <label htmlFor="content" id="contentHeader">Content</label>
+        <br></br>
+            <textarea
                 id="content"
                 name="content"
                 type="text"
                 onChange={formik.handleChange}
                 value={formik.values.content}
             />
+        <br></br>
         <button type="submit">Submit</button>
        </form>
     )

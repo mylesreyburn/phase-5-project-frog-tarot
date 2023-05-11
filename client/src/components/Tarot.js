@@ -33,6 +33,7 @@ function Tarot( { id, name, imageUrl, description, fortune, luckyNumbers, commen
                 {comments.map((comment) => {
                 return (<Comment 
                         key={comment.id}
+                        userId={comment.user_id}
                         commentId={comment.id}
                         content={comment.content}
                         userName={comment.user.username}

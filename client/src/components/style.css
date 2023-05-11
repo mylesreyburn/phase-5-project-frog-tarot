@@ -116,6 +116,7 @@ button {
 }
 
 .tarotPage #tarotHeader {
+    text-align: center;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -153,3 +154,121 @@ button {
     align-self: right;
 }
 
+#login {
+    text-align: center;
+    margin: auto;
+    width: 20%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+#signUp {
+    text-align: center;
+    margin: auto;
+    width: 20%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+#tarotCommentLabel {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#tarotCommentForm {
+    text-align: left;
+}
+
+.ouijaHome h1 {
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: rgb(0, 255, 17);
+    font-size: 100px;
+    text-shadow: -2px 2px 0 #000,
+                 2px 2px 0 #000,
+                 2px -2px 0 #000,
+                 -2px -2px 0 #000;
+    border-color: black;
+}
+
+.comment {
+    text-align: left;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.postsTable {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(0, 199, 0);
+    border: 3px solid rgb(0, 52, 0);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+table {
+    margin-top: 40px;
+}
+
+table, th, td {
+    border-bottom: 3px solid rgb(0, 52, 0)
+}
+
+.postsHeader { 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    border: 3px solid rgb(0, 52, 0)
+}
+
+.post {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.newPostForm {
+    text-align: center;
+}
+
+#newOuijaPostButton {
+    text-align: center;
+}
+
+.newPostForm #contentHeader {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.newPostForm #titleHeader {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.newPostForm #content {
+    width: 400px;
+    height: 100px;
+}
+
+.userButtons {
+    text-align: right;
+}
+
+.post #content {
+    width: 400px;
+    height: 100px;
+}
+
+#postBody {
+    margin: 10px;
+    border: 3px solid rgb(0, 52, 0);
+    background-color: rgb(158, 215, 158);
+}
+
+#userHeader {
+
+}
+
+.tarotPage #content {
+    width: 400px;
+    height: 100px;
+}
+
+.tarotPage #commentContent {
+    width: 400px;
+    height: 50px;
+}

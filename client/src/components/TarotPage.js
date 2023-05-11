@@ -15,7 +15,11 @@ function TarotPage( { tarots } ){
     }
 
     function getRandomTarot(){
-        setRandTarot(Math.floor(Math.random() * 23) + 1)
+        let randNumber = Math.floor(Math.random() * 23) + 1
+        while(randNumber === randTarot){
+            randNumber = Math.floor(Math.random() * 23) + 1
+        }
+        setRandTarot(randNumber)
         getLuckyNumbers()
     }
 

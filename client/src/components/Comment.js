@@ -8,6 +8,7 @@ import { userAtom, loggedInAtom } from "./lib/atoms";
 
 
 function Comment( { userId, content, userName, commentId } ){
+    console.log(userId)
 
     const [isHidden, setIsHidden] = useState(true)
 
@@ -26,7 +27,7 @@ function Comment( { userId, content, userName, commentId } ){
     // onMouseOut={toggleVisibilityOff}
 
     return (
-        <div onMouseOver={toggleVisibilityOn} >
+        <div onMouseOver={toggleVisibilityOn} className="comment" >
             <h4 id="commentUsername">{userName}</h4>
             <p id="commentText">{content}</p>
             {isHidden ? <></> : <DeleteButton type="Comment" itemId={commentId}/>}

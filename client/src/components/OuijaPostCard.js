@@ -9,7 +9,7 @@ function OuijaPostCard( { post } ){
     }
 
     return (
-        <tr>
+        <tr id="tableRow">
             <td>
                 {post.user.username}
             </td>

@@ -66,7 +66,10 @@ function DeleteButton( { type, itemId } ){
                         if (typeToDelete() === "post"){
                             history.push("/ouija")
                         }
-                })
+                        else if (typeToDelete() === "comment"){
+                            window.location.reload(false)
+                        }
+                    })
                 }
                 else{
                     response.json()

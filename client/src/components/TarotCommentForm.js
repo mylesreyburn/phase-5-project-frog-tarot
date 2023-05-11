@@ -27,7 +27,7 @@ function TarotCommentForm( { tarotId } ){
         })
         .then(response => response.json())
         .then(json => console.log(json))
-   
+        .then(() => window.location.reload(false))
         }
         else {
             window.alert("Must be logged in!")
@@ -38,15 +38,17 @@ function TarotCommentForm( { tarotId } ){
 
 
     return(
-        <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="content">New Comment</label>
-            <input
+        <form onSubmit={formik.handleSubmit} id="tarotCommentForm">
+        <label id="tarotCommentLabel" htmlFor="content">New Comment</label>
+        <br></br>
+            <textarea
                 id="content"
                 name="content"
                 type="text"
                 onChange={formik.handleChange}
                 value={formik.values.content}
             />
+        <br></br>
         <button type="submit">Submit</button>
        </form>
     )

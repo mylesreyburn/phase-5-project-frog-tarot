@@ -42,9 +42,12 @@ function Login(){
       return(
         <div className="login">
             <Navbar />
+            <div id="login">
             <h1 id="loginHeader">Log In</h1>
-            <form onSubmit={formik.handleSubmit}>
+            <br></br>
+            <form onSubmit={formik.handleSubmit} id="loginForm">
             <label htmlFor="email">Email</label>
+            <br></br>
                 <input
                     id="email"
                     name="email"
@@ -52,7 +55,9 @@ function Login(){
                     onChange={formik.handleChange}
                     value={formik.values.email}
                 />
+            <br></br>
             <label htmlFor="password">Password</label>
+            <br></br>
                 <input
                     id="password"
                     name="password"
@@ -60,8 +65,10 @@ function Login(){
                     onChange={formik.handleChange}
                     value={formik.values.password}
                 />
+            <br></br>
             <button type="submit">Submit</button>
             </form>
+            </div>
        </div>
     )
 }

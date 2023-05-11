@@ -43,10 +43,12 @@ function Signup(){
       });
 
     return (
-        <div className="Sign Up">
+        <div className="signUp">
             <Navbar/>
+            <div id="signUp">
             <h1 id="signUpHeader">Sign Up</h1>
             <form onSubmit={formik.handleSubmit}>
+            <br></br>
             <label htmlFor="username">Username</label>
                 <input
                     id="username"
@@ -55,6 +57,7 @@ function Signup(){
                     onChange={formik.handleChange}
                     value={formik.values.username}
                 />
+            <br></br>
             <label htmlFor="email">Email</label>
                 <input
                     id="email"
@@ -63,6 +66,7 @@ function Signup(){
                     onChange={formik.handleChange}
                     value={formik.values.email}
                 />
+            <br></br>
             <label htmlFor="password">Password</label>
                 <input
                     id="password"
@@ -71,8 +75,10 @@ function Signup(){
                     onChange={formik.handleChange}
                     value={formik.values.password}
                 />
+            <br></br>
             <button type="submit">Submit</button>
             </form>
+            </div>
         </div>
     )
 }
