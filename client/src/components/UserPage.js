@@ -6,6 +6,7 @@ import DeleteButton from "./DeleteButton";
 import { useEffect } from "react";
 import Navbar from "./Navbar";
 
+
 function UserPage(){
 
     const [user, setUser] = useState({})

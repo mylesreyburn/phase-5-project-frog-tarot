@@ -7,7 +7,7 @@ import App from "./components/App";
 
 ReactDOM.render(
 
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
         <RecoilRoot>
             <App />
         </RecoilRoot>

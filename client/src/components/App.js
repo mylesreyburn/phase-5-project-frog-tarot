@@ -20,6 +20,8 @@ import "./style.css"
 import { useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
 import { userAtom, loggedInAtom } from "./lib/atoms";
 
+import BrowserRouter from 'react-router-dom/BrowserRouter'
+
 
 
 function App() {
