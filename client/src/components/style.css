@@ -259,8 +259,12 @@ table, th, td {
     background-color: rgb(158, 215, 158);
 }
 
-#userHeader {
+.userPage {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 
+#userHeader {
+    
 }
 
 .tarotPage #content {
